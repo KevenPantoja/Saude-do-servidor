@@ -14,7 +14,6 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
-    use Illuminate\Support\Facades\Auth;
 
     public function login(Request $request)
     {
@@ -77,7 +76,6 @@ class AuthController extends Controller
         return redirect()->route('login');
     }
 
-    use Illuminate\Support\Facades\Auth;
 
     protected function authenticated(Request $request, $user)
     {

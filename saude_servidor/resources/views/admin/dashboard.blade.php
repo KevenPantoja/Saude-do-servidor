@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container mt-3 d-flex justify-content-between align-items-center">
-    <a href="{{ route('dashboard.admin') }}" class="btn btn-outline-primary btn-sm">
+    <a href="{{ route('admin.dashboard') }}" class="btn btn-outline-primary btn-sm">
         <i class="fas fa-arrow-left"></i> Voltar para Tela Principal
     </a>
 

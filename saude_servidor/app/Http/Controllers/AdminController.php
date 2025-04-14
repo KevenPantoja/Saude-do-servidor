@@ -9,16 +9,6 @@ use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware(function ($request, $next) {
-            if (auth()->user() && auth()->user()->is_admin) {
-                return $next($request);
-            }
-
-            return redirect('/'); // Redireciona para a tela principal se o usuário não for admin
-        });
-    }
 
     public function dashboard()
     {
@@ -36,7 +26,7 @@ class AdminController extends Controller
     public function verDados(User $user)
     {
         $dados = $user->dadosSaude()->orderBy('data_registro', 'desc')->get();
-        return view('admin.ver_dados', compact('usuario', 'dados'));
+        return view('admin.ver_dados', ['usuario' => $user, 'dados' => $dados]);
     }
 
     public function excluirDado($id)
@@ -78,7 +68,7 @@ class AdminController extends Controller
     public function editarUsuario($id)
     {
         $usuario = User::findOrFail($id);
-        return view('admin.editar_usuario', compact('usuario'));
+        return view('admin.editar_usuarios', compact('usuario'));
     }
 
     public function atualizarUsuario(Request $request, $id)
